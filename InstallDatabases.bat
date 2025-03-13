@@ -1256,34 +1256,7 @@ echo %colWhiteDarkYellow%^|                                                     
 echo %colWhiteDarkYellow%^| Loading Spanish Locale into World Database                                  ^|%colReset%
 echo %colWhiteDarkYellow%^|                                                                             ^|%colReset%
 echo %colWhiteDarkYellow%^|_____________________________________________________________________________^|%colReset%
-echo  .... Command (1/14)
-%dbClientConnectionString% %wdb% < Translations\Translations\Spanish\Spanish_CommandHelp.sql
-echo  .... Creatures (2/14)
-%dbClientConnectionString% %wdb% < Translations\Translations\Spanish\Spanish_Creature.sql
-echo  .... Creature AI Texts (3/14)
-%dbClientConnectionString% %wdb% < Translations\Translations\Spanish\Spanish_Creature_ai_texts.sql
-echo  .... DB Script Strings (4/14)
-%dbClientConnectionString% %wdb% < Translations\Translations\Spanish\Spanish_db_script_string.sql
-echo  .... GameObjects (5/14)
-%dbClientConnectionString% %wdb% < Translations\Translations\Spanish\Spanish_Gameobject.sql
-echo  .... Gossip Texts (6/14)
-%dbClientConnectionString% %wdb% < Translations\Translations\Spanish\Spanish_Gossip_texts.sql
-echo  .... Gossip Menu Option (7/14)
-%dbClientConnectionString% %wdb% < Translations\Translations\Spanish\Spanish_Gossip_Menu_Option.sql
-echo  .... Items (8/14)
-%dbClientConnectionString% %wdb% < Translations\Translations\Spanish\Spanish_Items.sql
-echo  .... Mangos String (9/14)
-%dbClientConnectionString% %wdb% < Translations\Translations\Spanish\Spanish_Mangos_String.sql
-echo  .... PageText (10/14)
-%dbClientConnectionString% %wdb% < Translations\Translations\Spanish\Spanish_PageText.sql
-echo  .... Points of Interest (11/14)
-%dbClientConnectionString% %wdb% < Translations\Translations\Spanish\Spanish_Points_of_interest.sql
-echo  .... Quests (12/14)
-%dbClientConnectionString% %wdb% < Translations\Translations\Spanish\Spanish_Quest.sql
-echo  .... Script Texts (13/14)
-%dbClientConnectionString% %wdb% < Translations\Translations\Spanish\Spanish_Script_Texts.sql
-echo  .... NpcText (14/14)
-%dbClientConnectionString% %wdb% < Translations\Translations\Spanish\Spanish_NpcText.sql
+for %%i in (Translations\Translations\Spanish\*.sql) do echo . Loading %%i & %dbClientConnectionString% %wdb% < %%i
 goto LocWorldDB6:
 
 :LoadMX
