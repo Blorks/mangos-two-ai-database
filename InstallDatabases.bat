@@ -73,7 +73,7 @@ set colWhiteDarkYellow=[97;43m
 IF NOT DEFINED createcharDB         set createcharDB=YES
 IF NOT DEFINED createworldDB       set createworldDB=YES
 IF NOT DEFINED createrealmDB       set createrealmDB=YES
-IF NOT DEFINED createMangosUser set createMangosUser=YES
+IF NOT DEFINED createMangosUser set createMangosUser=NO
 IF NOT DEFINED updatesOnly           set updatesOnly=NO
 IF NOT DEFINED loadcharDB             set loadcharDB=YES
 IF NOT DEFINED loadworldDB           set loadworldDB=YES
@@ -94,7 +94,7 @@ IF NOT DEFINED locFR                       set locFR=NO
 IF NOT DEFINED locDE                       set locDE=NO
 IF NOT DEFINED locCH                       set locCH=NO
 IF NOT DEFINED locTW                       set locTW=NO
-IF NOT DEFINED locES                       set locES=NO
+IF NOT DEFINED locES                       set locES=YES
 IF NOT DEFINED locMX                       set locMX=NO
 IF NOT DEFINED locRU                       set locRU=NO
 IF NOT DEFINED locIT                       set locIT=NO
@@ -588,8 +588,7 @@ echo %colWhiteDarkYellow%^| Loading Character Database                          
 echo %colWhiteDarkYellow%^|_____________________________________________________________________________^|%colReset%
 echo %colReset%
 echo %colReset% Loading Database %Cdb%
-%dbClientConnectionString% %cdb% < Character\Setup\characterLoadDB.sql
-
+for %%i in (Character\Setup\FullDB\*.sql) do echo . Loading %%i & %dbClientConnectionString% %cdb% < %%i
 goto RealmDB:
 
 :RealmDB1
@@ -1027,6 +1026,8 @@ if %locPT% == YES goto LoadPT:
 if %locBR% == YES goto LoadBR:
 
 :done4
+
+
 
 echo %colWhiteBold%_______________________________________________________________________________%colReset%
 echo %colWhiteDarkBlue%^|    __  __      _  _  ___  ___  ___                                          ^|%colReset%
